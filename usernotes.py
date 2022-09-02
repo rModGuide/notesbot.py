@@ -44,7 +44,7 @@ for log in reddit.subreddit("mod").mod.stream.log(skip_existing=True):
             # Fetch usernotes with PMTW.
             users_notes = notes.get_user_notes(username)
             note_list = [
-                f"**I found the following notes for u/{username}** starting with the most recent:"
+                f"**I found the following notes for u/{username}**:"
             ]
             # Count the notes associated with the user.
             for notecount, note in enumerate(users_notes):
