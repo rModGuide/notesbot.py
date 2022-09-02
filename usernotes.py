@@ -24,10 +24,10 @@ note_threshold = 5
 for log in reddit.subreddit("mod").mod.stream.log(skip_existing=True):
     # Pass mod log action attributes into variables for later use.
     log_subreddit = log.subreddit
-    # The way the subreddit name is assigned on this line is necessary for PMTW to properly process usernotes.
-    sub_name = reddit.subreddit(f"{log_subreddit}")
     log_details = log.description
-
+    # The way the subreddit name is defined here is necessary for PMTW to properly process usernotes.
+    sub_name = reddit.subreddit(f"{log_subreddit}")
+    
     # Monitor the mod log for 'wikirevise' actions, the corresponding mod action for usernote additions.
     if log.action == "wikirevise":
         # Extract the reddit username from the mod log entry when a usernote is left.
