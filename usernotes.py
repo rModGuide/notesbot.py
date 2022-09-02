@@ -11,7 +11,7 @@ reddit = praw.Reddit(
     client_id="",
     client_secret="",
     username = "",
-    password = "",
+    password = ""
 )
 print("Connecting to reddit...")
 print("Starting up...")
