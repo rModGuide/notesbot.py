@@ -1,4 +1,4 @@
-# usernotes_notifier.py
+# notesbot.py
 Notify a subreddit when a user has received a set number of toolbox usernotes.
 
 To run this bot, set up your login credentials using your reddit preferences.  Then enter them in the appropriate space.
