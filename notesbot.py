@@ -1,7 +1,7 @@
 #  Usernotes Notifier Bot v 1.0 by u/BuckRowdy
 #  Notify a subreddit when a user gets too many toolbox usernotes.
 
-# Import modules.  PMTW is nt a standard module and must be installed.
+# Import modules.  PMTW is not a standard module and must be installed.
 from datetime import datetime as datetime
 import time
 from time import strftime, localtime, timezone
