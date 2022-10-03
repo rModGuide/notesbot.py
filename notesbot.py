@@ -89,9 +89,9 @@ with open("/FILE/PATH/TO/YOUR/USERNOTES_BLACKLIST.json", "r+") as outfile:
 				if notecount >= note_threshold:
 					if username in user_blacklist:
 						if log_subreddit in user_blacklist[username]:
-							print(f"This user is already in user blacklist for {log_subreddit}.")
+							print(f"This user is already in the user blacklist for {log_subreddit}.")
 					else:
-						message_title = f"Usernotes update: u/{username} has {notecount} notes in r/{sub_name}."
+						message_title = f"Usernotes update: u/{username} now has {notecount} notes in r/{sub_name}."
 						message_body = f"**I found the following notes for u/{username}**:\n\n"+table_header+new_notelist		
 						reddit.subreddit(f"{sub_name}").message(
 							subject=message_title, message=message_body
