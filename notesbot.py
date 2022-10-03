@@ -32,7 +32,8 @@ currentSysTime = time.localtime()
 
 	 
 # Load the user blacklist from a text file.  If file doesn't exist, it will be created.  You must specify your file path, and the file extension is .json
-# Given a folder named 'bots' in your documents folder on windows, your file path would be: C:\Documents\bots\usernotes_log.json
+# Given a folder named 'bots' in your documents folder on windows, your file path would be something like: C:\Users\USERNAME\Documents\bots\usernotes_log.json
+# for MacOS it would be ~/Documents/bots/usernotes_log.json.  Linux: /home/COMPUTERNAME/Documents/bots/usernotes_log.json
 with open("/FILE/PATH/TO/YOUR/USERNOTES_BLACKLIST.json", "r+") as outfile:	
 	try:
 		user_blacklist = json.load(outfile)
@@ -61,10 +62,11 @@ with open("/FILE/PATH/TO/YOUR/USERNOTES_BLACKLIST.json", "r+") as outfile:
 			if match:
 				# Username will be pulled from the second match group, the first match group checks for 'new' which is not always present.
 				username = match.group(2)
-				currentSysTime = time.localtime()
+				# Print a time reference to the terminal so you can orient yourself as to when the last usernote was left.
 				print("New usernote found - " + time.strftime('%m/%d/%Y @ %H:%M:%S', currentSysTime))
 				print(f"Note found for r/{sub_name} left by u/{log.mod}")
-				# Required code for PMTW.  
+				# Required code for PMTW.
+				# When running on r/mod, the second argument, 'sub_name' must be an subreddit object, and not a string.  This is passed from line 48.
 				notes = pmtw.Usernotes(reddit, sub_name)
 				settings = pmtw.Settings(reddit, sub_name)
 				users_notes = notes.get_user_notes(username)
@@ -83,7 +85,7 @@ with open("/FILE/PATH/TO/YOUR/USERNOTES_BLACKLIST.json", "r+") as outfile:
 				for note in note_list:
 					new_notelist = "\n".join(note_list)
 					
-				# Once the number of notes on an account equals the threshold number, the main bot function is triggered.. 
+				# Once the number of notes on an account equals the threshold number, the main bot function is triggered. 
 				if notecount >= note_threshold:
 					if username in user_blacklist:
 						if log_subreddit in user_blacklist[username]:
